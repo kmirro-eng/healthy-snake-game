@@ -1,0 +1,18 @@
+{
+  "name": "healthy-snake-game",
+  "version": "1.0.0",
+  "description": "A kid-friendly healthy eating snake game for salescloudux team",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": ["game", "snake", "kids", "healthy", "education"],
+  "author": "salescloudux team",
+  "license": "MIT"
+}

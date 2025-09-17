@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravity Snake - Tilt to Play!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #2c2c54;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        
+        #gameContainer {
+            position: relative;
+            border: none;
+            border-radius: 25px;
+            margin: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            background: white;
+            overflow: hidden;
+        }
+        
+        #gameCanvas {
+            display: block;
+            background: transparent;
+            border-radius: 25px;
+        }
+        
+        #ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c2c54;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        
+        #instructions {
+            text-align: center;
+            margin: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #2c2c54;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        
+        #gameOver {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            z-index: 20;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 15px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .tilt-indicator {
+            display: none; /* Removed blue circles */
+        }
+        
+        .tilt-dot {
+            display: none; /* Removed blue circles */
+        }
+        
+        #keyIndicator {
+            display: none; /* Removed for cleaner look */
+        }
+    </style>
+</head>
+<body>
+    <h1>🍎 Healthy Snake</h1>
+    <div id="instructions">
+        <strong>Eat fruits & vegetables to grow healthy!</strong><br>
+        Arrow Keys to move • Avoid 🤢 • Find 💊 to heal<br>
+        Press SPACEBAR to start
+    </div>
+    
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="ui">
+            <div>Score: <span id="score">0</span></div>
+            <div>Length: <span id="length">1</span></div>
+            <div>Level: <span id="level">1</span></div>
+            <div>Health: <span id="health">😊</span></div>
+        </div>
+        <div class="tilt-indicator">
+            <div class="tilt-dot" id="tiltDot"></div>
+        </div>
+        <div id="keyIndicator">
+            <div>Keys: <span id="activeKeys">None</span></div>
+        </div>
+        <div id="gameOver">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
